@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>LARAVEL AJAX CRUD</title>
+    <title>Laravel Ajax CRUD</title>
     <style>
         body {
             background-color: lightgreen !important;
@@ -21,7 +21,7 @@
     <div class="container" style="margin-top: 50px">
         <div class="row">
             <div class="col-md-12">
-                <h4 class="text-center">LARAVEL CRUD AJAX <br> <a href="https://www.instagram.com/_nazkiaaa_/" style="text-decorations:none; color:inherit" the target=”_blank”>Nazkia Najidah Ramdani - XI Pioneer</a></h4>
+                <h4 class="text-center">LARAVEL CRUD AJAX <br> <a href="https://www.instagram.com/_nazkiaaa_/" target="_blank">Nazkia Najidah Ramdani</a></h4>
                 <div class="card border-0 shadow-sm rounded-md mt-4">
                     <div class="card-body">
 
@@ -52,6 +52,8 @@
             </div>
         </div>
     </div>
-    @include('modal-create') 
+    @include('components.modal-create')
+    @include('components.modal-edit')
+    @include('components.delete-post')
 </body>
 </html>

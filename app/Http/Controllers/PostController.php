@@ -54,4 +54,72 @@ class PostController extends Controller
             'data'    => $post  
         ]);
     }
+
+    /**
+     * show
+     *
+     * @param  mixed $post
+     * @return void
+     */
+    public function show(Post $post)
+    {
+        //return response
+        return response()->json([
+            'success' => true,
+            'message' => 'Detail Data Post',
+            'data'    => $post  
+        ]); 
+    }
+    
+    /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $post
+     * @return void
+     */
+    public function update(Request $request, Post $post)
+    {
+        //define validation rules
+        $validator = Validator::make($request->all(), [
+            'title'     => 'required',
+            'content'   => 'required',
+        ]);
+
+        //check if validation fails
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 422);
+        }
+
+        //create post
+        $post->update([
+            'title'     => $request->title, 
+            'content'   => $request->content
+        ]);
+
+        //return response
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Berhasil Diudapte!',
+            'data'    => $post  
+        ]);
+    }
+
+    /**
+     * destroy
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function destroy($id)
+    {
+        //delete post by ID
+        Post::where('id', $id)->delete();
+
+        //return response
+        return response()->json([
+            'success' => true,
+            'message' => 'Data Post Berhasil Dihapus!.',
+        ]); 
+    }
 }
